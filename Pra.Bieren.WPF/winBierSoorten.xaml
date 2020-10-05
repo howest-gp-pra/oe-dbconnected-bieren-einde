@@ -1,0 +1,17 @@
+﻿<Window x:Class="Pra.Bieren.WPF.winBierSoorten"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pra.Bieren.WPF"
+        mc:Ignorable="d"
+        Title="Biersoorten" Height="450" Width="339.135" Loaded="Window_Loaded" >
+    <Grid>
+        <ListBox x:Name="lstBiersoorten" HorizontalAlignment="Left" Height="244" Margin="10,10,0,0" VerticalAlignment="Top" Width="289" SelectionChanged="lstBiersoorten_SelectionChanged"  />
+        <TextBox x:Name="txtNew" MaxLength="50" HorizontalAlignment="Left" Height="33" Margin="8,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191"/>
+        <Button x:Name="btnSaveNew" Content="Add new" HorizontalAlignment="Left" Height="34" Margin="204,269,0,0" VerticalAlignment="Top" Width="95" Click="btnSaveNew_Click"  />
+        <TextBox x:Name="txtEdit" MaxLength="50" HorizontalAlignment="Left" Height="33" Margin="8,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191"/>
+        <Button x:Name="btnSaveCurrent" Content="Save current" HorizontalAlignment="Left" Height="34" Margin="204,308,0,0" VerticalAlignment="Top" Width="95" Click="btnSaveCurrent_Click"  />
+        <Button x:Name="btnDeleteCurrent" Content="Delete current" HorizontalAlignment="Left" Height="35" Margin="204,347,0,0" VerticalAlignment="Top" Width="95" Click="btnDeleteCurrent_Click" />
+    </Grid>
+</Window>
