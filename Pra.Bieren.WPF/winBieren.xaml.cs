@@ -75,9 +75,6 @@ namespace Pra.Bieren.WPF
             Bier bier = (Bier)lstBieren.SelectedItem;
             txtNaam.Text = bier.Naam;
             txtAlcohol.Text = bier.Alcohol.ToString("0.00");
-            // onderstaande zou moeten werken, maar werkt niet ...
-            cmbBiersoort.SelectedItem = bier.Soort;
-            // start alternatief
             int indeks = 0;
             foreach(BierSoort bierSoort in cmbBiersoort.Items)
             {
@@ -88,7 +85,6 @@ namespace Pra.Bieren.WPF
                 }
                 indeks++;
             }
-            //einde alternatief
             sldScore.Value = (double)bier.Score;
 
         }
@@ -111,6 +107,20 @@ namespace Pra.Bieren.WPF
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (lstBieren.SelectedItem == null) return;
+            Bier bier = (Bier)lstBieren.SelectedItem;
+            if(!bierService.DeleteBier(bier))
+            {
+                MessageBox.Show("Er heeft zich een fout voorgedaan", "Error");
+            }
+            else
+            {
+                lstBieren.ItemsSource = null;
+                lstBieren.ItemsSource = bierService.Bieren;
+                lstBieren.SelectedIndex = -1;
+                InitializeControls();
+            }
+
+
 
         }
 

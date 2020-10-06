@@ -74,6 +74,7 @@ namespace Pra.Bieren.WPF
             try
             {
                 BierSoort bierSoort = (BierSoort)lstBiersoorten.SelectedItem;
+                bierSoort.Soort = txtEdit.Text.Trim();
                 if (!bierSoortService.EditBierSoort(bierSoort))
                     MessageBox.Show("Er heeft zich een onverwachte fout voorgedaan", "ERROR");
                 else
@@ -96,6 +97,7 @@ namespace Pra.Bieren.WPF
             try
             {
                 BierSoort bierSoort = (BierSoort)lstBiersoorten.SelectedItem;
+
                 if (!bierSoortService.DeleteBierSoort(bierSoort))
                     MessageBox.Show("Er heeft zich een onverwachte fout voorgedaan", "ERROR");
                 else
