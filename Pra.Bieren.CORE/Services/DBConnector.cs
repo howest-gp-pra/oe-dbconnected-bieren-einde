@@ -33,7 +33,6 @@ namespace Pra.Bieren.CORE.Services
             {
                 mijnOpdracht.Connection.Open();
                 mijnOpdracht.ExecuteNonQuery();
-                mijnVerbinding.Close();
                 return true;
             }
             catch (Exception fout)
@@ -41,15 +40,34 @@ namespace Pra.Bieren.CORE.Services
                 string foutmelding = fout.Message;
                 return false;
             }
+            finally
+            {
+                if(mijnVerbinding != null)
+                    mijnVerbinding.Close();
+
+            }
         }
         public static string ExecuteScalaire(string sqlScalaireInstructie)
         {
             string constring = Helper.GetConnectionString();
             SqlConnection mijnVerbinding = new SqlConnection(constring);
             SqlCommand mijnOpdracht = new SqlCommand(sqlScalaireInstructie, mijnVerbinding);
-            mijnVerbinding.Open();
-            string retour = mijnOpdracht.ExecuteScalar().ToString();
-            mijnVerbinding.Close();
+            string retour = "";
+            try
+            {
+                mijnVerbinding.Open();
+                retour = mijnOpdracht.ExecuteScalar().ToString();
+
+            }
+            catch (Exception fout)
+            {
+                string foutmelding = fout.Message;
+            }
+            finally
+            {
+                if (mijnVerbinding != null)
+                    mijnVerbinding.Close();
+            }
             return retour;
         }
     }

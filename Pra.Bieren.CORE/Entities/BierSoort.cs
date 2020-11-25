@@ -23,7 +23,7 @@ namespace Pra.Bieren.CORE.Entities
 				if (value.Length == 0)
 					throw new Exception("Waarde biersoort kan niet leeg zijn");
 				if (value.Length > 50)
-					value = value.Substring(0, 30);
+					value = value.Substring(0, 50);
 				soort = value;
 			}
 		}

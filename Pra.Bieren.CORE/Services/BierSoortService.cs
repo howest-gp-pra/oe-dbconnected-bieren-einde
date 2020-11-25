@@ -57,9 +57,9 @@ namespace Pra.Bieren.CORE.Services
             sql += " where id = " + biersoort.ID;
             if (DBConnector.ExecuteCommand(sql))
             {
-                // pas het bier in de List aan
-                int positie = biersoorten.FindIndex(zoek => zoek.ID == biersoort.ID);
-                biersoorten[positie].Soort = biersoort.Soort;
+                //// pas het bier in de List aan
+                //int positie = biersoorten.FindIndex(zoek => zoek.ID == biersoort.ID);
+                //biersoorten[positie].Soort = biersoort.Soort;
 
                 biersoorten = biersoorten.OrderBy(sorteerbier => sorteerbier.Soort).ToList();
                 return true;
@@ -89,6 +89,7 @@ namespace Pra.Bieren.CORE.Services
             }
         }
 
+        // OPGEPAST : methode hieronder is STATIC
         public static BierSoort GetByID(int id)
         {
             BierSoort bierSoort;
